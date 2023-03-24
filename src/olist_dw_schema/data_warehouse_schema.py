@@ -33,7 +33,7 @@ class DataWarehouseSchema:
 
         self.cursor.execute(
             """
-            INSERT INTO dw.orders_fact (
+            INSERT INTO dw.fact_orders (
                 SELECT
                     o.order_id, o.customer_id, op.payment_value
                 FROM
@@ -144,7 +144,7 @@ class DataWarehouseSchema:
 
         self.cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS dw.orders_fact (
+            CREATE TABLE IF NOT EXISTS dw.fact_orders (
                 order_id VARCHAR(32),
                 customer_id VARCHAR(32) REFERENCES dw.dim_customers (customer_id),
                 payment_value NUMERIC(12, 2) CHECK (payment_value >= 0) NOT NULL
