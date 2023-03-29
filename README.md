@@ -2,23 +2,23 @@
 ## OBJECTIVE:
 Create a Data Warehouse in the dimensional model (fact and dimensional tables) with data from the [Olist](https://olist.com/) brazilian ecommerce to answer the following questions requested by an imaginary CEO:
 1. Average of amounts paid in each payment method.
-2. Avarage quantity of customers on the São Paulo and Goiás states from Brazil.
+2. Average quantity of customers in the São Paulo and Goiás states from Brazil.
 3. Median of the stars review of each product category.
 4. Average price of purchase installments in installments.
-5. Avarage price of the 25% biggest purchases prices.
-6. Quantity of times that a order was delivered after the expected delivery date.
-7. Avarage price of each product category.
+5. Average price of the 25% biggest purchases prices.
+6. Quantity of times that an order was delivered after the expected delivery date.
+7. Average price of each product category.
 8. Day of the week with biggest purchases.
 
 ## The dataset sources:
 The datasets are from [Kaggle](https://www.kaggle.com) and can be found [here](https://www.kaggle.com/olistbr/brazilian-ecommerce).
 ### Dataset schema:
-The image image bellow represents the dataset files in CSV format downloaded from Kaggle and their relationships:
+The image below represents the dataset files in CSV format downloaded from Kaggle and their relationships:
 
 ![imageDB](https://i.imgur.com/HRhd2Y0.png)
 
 ## Data Warehouse schema:
-To answer the imaginary CEO questions, the final data warehouse schema will look like bellow. We have the order_fact table as our Fact table and it dimensional tables:
+To answer the imaginary CEO questions, the final data warehouse schema will look like below. We have the order_fact table as our Fact table and it dimensional tables:
 
 ![imageDW](https://i.imgur.com/7BkaiJH.png)
 
@@ -26,7 +26,7 @@ To answer the imaginary CEO questions, the final data warehouse schema will look
 ## The ETL pipeline:
 To create the Data Warehouse schema, we will execute the following pipeline stages:
 1. Create a staging schema (named 'staging') and tables on the database for ingesting data from the dataset files.
-2. Create the data warehouse schema (named 'dw) and tables on the database.
+2. Create the data warehouse schema (named 'dw') and tables on the database.
 3. Use the data on the staging schema to populate the data warehouse schema tables.
 
 ---
@@ -37,11 +37,11 @@ To create the Data Warehouse schema, we will execute the following pipeline stag
 ```sh
 docker compose up -d
 ```
-2. Start the set_up.sh script on the container. This script set up the container environment and start the scripts that do the ETL pipeline:
+2. Start the set_up.sh script on the container. This script set up the container environment and starts the scripts that do the ETL pipeline:
 ```sh
 docker compose exec postgres-olist-database bash /olist_dw/set_up.sh
 ```
-3. Now the tables from the data warehouse schema are created and populated with data. The PostgreSQL container exposes the port 5434 for connecting any compatible tool for quering the data.
+3. Now the tables from the data warehouse schema are created and populated with data. The PostgreSQL container exposes port 5434 for connecting any compatible tool for querying the data.
 ---
 
 ### Useful commands:
